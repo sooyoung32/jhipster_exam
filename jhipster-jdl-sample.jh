@@ -1,0 +1,70 @@
+entity User {
+	id Long,
+    firstName String,
+    lastName String,
+    email String,
+    customerLevel CustomerLevel
+}
+
+enum CustomerLevel {
+	NEW, SILVER, GOLD, VIP, VVIP, FIRST
+}
+
+entity Orders {
+	orderId Long,
+    orderDate ZonedDateTime,
+    customerId Long
+}
+
+entity OrderItems {
+	orderid Long,
+    productId Lond,
+    unitPrice Integer,
+    quantity Integer
+}
+
+entity Product {
+	productId Long,
+    productName String,
+    productDesc String,
+    minPrice Integer
+}
+
+entity Price {
+	priceId Long,
+    priceType PriceType,
+    priceName String,
+    price Integer
+}
+
+entity Cart {
+	userId Long,
+    productId Long
+}
+
+
+
+relationship OneToMany {
+	Product{prices} to Price,
+    Cart{items} to Product
+}
+
+relationship OneToOne {
+	User{cart} to Cart
+}
+
+
+
+
+
+
+// Set pagination options
+paginate JobHistory, Employee with infinite-scroll
+paginate Job with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Employee, Job
+// Set an angular suffix
+angularSuffix * with mySuffix

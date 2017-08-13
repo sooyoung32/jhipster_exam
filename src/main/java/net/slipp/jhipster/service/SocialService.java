@@ -90,6 +90,14 @@ public class SocialService {
         if (!StringUtils.isBlank(email)) {
             Optional<User> user = userRepository.findOneByEmail(email);
             if (user.isPresent()) {
+
+                User userWithAuthorities = userRepository.findOneWithAuthoritiesById(user.get().getId());
+                Set<Authority> authorities = userWithAuthorities.getAuthorities();
+                authorities.add(authorityRepository.findOne("ROLE_" + providerId.toUpperCase()));
+
+                userWithAuthorities.setAuthorities(authorities);
+                userRepository.saveAndFlush(userWithAuthorities);
+
                 log.info("User already exist associate the connection to this account");
                 return user.get();
             }
@@ -97,8 +105,8 @@ public class SocialService {
 
         String login = getLoginDependingOnProviderId(userProfile, providerId);
         String encryptedPassword = passwordEncoder.encode(RandomStringUtils.random(10));
-        Set<Authority> authorities = new HashSet<>(1);
-        authorities.add(authorityRepository.findOne("ROLE_USER"));
+        Set<Authority> authorities = new HashSet<>(2);
+        authorities.add(authorityRepository.findOne("ROLE_" + providerId.toUpperCase()));
 
         User newUser = new User();
         newUser.setLogin(login);

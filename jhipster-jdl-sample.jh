@@ -23,23 +23,9 @@ entity Product {
     price Integer
 }
 
-entity Discount {
-    discountName String,
-    discountType DiscountType,
-    discountAmount Integer
-}
-
-enum DiscountType {
-    PERCENT, MONEY
-}
-
 entity CartItems {
-    cartName String
 }
 
-relationship ManyToMany {
-	Product{discounts(productId)} to Discount
-}
 
 relationship OneToMany {
 	Orders{orderItems(orderId)} to OrderItems,
@@ -54,12 +40,12 @@ relationship OneToOne {
 }
 
 // Set pagination options
-paginate OrderItems, CartItems with infinite-scroll
-paginate Orders, Product, Customer, Discount with pagination
+paginate Orders, Product, OrderItems, CartItems with infinite-scroll
+paginate Customer with pagination
 
 dto * with mapstruct
 
 // Set service options to all except few
 service all with serviceImpl except User
 // Set an angular suffix
-angularSuffix * with slipp
+// angularSuffix * with slipp

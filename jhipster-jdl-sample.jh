@@ -9,44 +9,52 @@ enum CustomerLevel {
 }
 
 entity Orders {
-	orderCode String,
-    orderDate ZonedDateTime
+	orderCode String required,
+    orderDate ZonedDateTime required
 }
 
 entity OrderItems {
-    unitPrice Integer,
-    quantity Integer
+    unitPrice Integer required,
+    quantity Integer required
 }
 
 entity Product {
-    productName String,
+    productName String required,
     productDesc String,
-    price Integer
+    price Integer required
 }
+entity CartItems {
+}
+
 entity Cart {
-    cartName String
+}
+
+entity Tag {
+	name String required minlength(2)
 }
 
 relationship OneToMany {
-    Product to OrderItems{product(productName)}
+    Product to OrderItems{product(productName)},
+    Product to CartItems{product(productName)}
 }
 
 relationship ManyToOne {
-    Cart{user(login)} to User,
 	Orders{user(login)} to User,
-	OrderItems{orders(orderCode)} to Orders
-}
-
-relationship ManyToMany {
-	Product{cart(cartName)} to Cart{product(productName)}
+	OrderItems{orders(orderCode)} to Orders,
+    CartItems{cart} to Cart
 }
 
 relationship OneToOne {
+	Cart{user(login)} to User,
     Customer{user(login)} to User
 }
 
+relationship ManyToMany {
+	Product{tag(name)} to Tag{product}
+}
+
 // Set pagination options
-paginate Orders, Product, OrderItems, Cart with infinite-scroll
+paginate Orders, Product, OrderItems, CartItems, Cart, Tag with infinite-scroll
 paginate Customer with pagination
 
 // dto * with mapstruct

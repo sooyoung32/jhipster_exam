@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.success = false;
-        this.registerAccount = {};
+        this.registerAccount = {'customerLevel': 'NEW'};
     }
 
     ngAfterViewInit() {

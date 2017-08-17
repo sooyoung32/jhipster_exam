@@ -7,6 +7,11 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "customer": "Customer",
+                "orders": "Orders",
+                "orderItems": "Order Items",
+                "product": "Product",
+                "cartItems": "Cart Items",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -46,7 +51,9 @@
             "confirmpassword": "New password confirmation",
             "confirmpassword.placeholder": "Confirm the new password",
             "email": "Email",
-            "email.placeholder": "Your email"
+            "email.placeholder": "Your email",
+            "phone": "Phone",
+            "phone.placeholder": "Your phone number"
         },
         "messages": {
             "info": {

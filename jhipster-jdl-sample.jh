@@ -1,25 +1,52 @@
-entity Blog {
-    name String required minlength(3),
-    handle String required minlength(2)
+
+entity Customer {
+    customerLevel CustomerLevel,
+    phone String
 }
 
-entity Entry {
-    title String required,
-    content TextBlob required,
-    date ZonedDateTime required
+enum CustomerLevel {
+    NEW, SILVER, GOLD, VIP, VVIP, FIRST
 }
 
-entity Tag {
-    name String required minlength(2)
+entity Orders {
+	orderCode String,
+    orderDate ZonedDateTime
+}
+
+entity OrderItems {
+    unitPrice Integer,
+    quantity Integer
+}
+
+entity Product {
+    productName String,
+    productDesc String,
+    price Integer
+}
+entity Cart {
+
+}
+
+relationship OneToMany {
+    Product to OrderItems{product(productName)}
 }
 
 relationship ManyToOne {
-    Blog{user(login)} to User,
-    Entry{blog(name)} to Blog
+	Orders{user(login)} to User,
+	OrderItems{orders(orderCode)} to Orders
 }
 
 relationship ManyToMany {
-    Entry{tag(name)} to Tag{entry}
+	Product to Cart{product(productName)}
 }
 
-paginate Entry, Tag with infinite-scroll
+relationship OneToOne {
+    Cart{user(login)} to User,
+    Customer{user(login)} to User
+}
+
+// Set pagination options
+paginate Orders, Product, OrderItems, Cart with infinite-scroll
+paginate Customer with pagination
+
+// dto * with mapstruct

@@ -24,7 +24,7 @@ entity Product {
     price Integer
 }
 entity Cart {
-
+    cartName String
 }
 
 relationship OneToMany {
@@ -32,16 +32,16 @@ relationship OneToMany {
 }
 
 relationship ManyToOne {
+    Cart{user(login)} to User,
 	Orders{user(login)} to User,
 	OrderItems{orders(orderCode)} to Orders
 }
 
 relationship ManyToMany {
-	Product to Cart{product(productName)}
+	Product{cart(cartName)} to Cart{product(productName)}
 }
 
 relationship OneToOne {
-    Cart{user(login)} to User,
     Customer{user(login)} to User
 }
 

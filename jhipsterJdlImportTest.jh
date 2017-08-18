@@ -1,0 +1,12 @@
+entity Customer {
+    customerLevel CustomerLevel,
+    phone String
+}
+
+enum CustomerLevel {
+    NEW, SILVER, GOLD, VIP, VVIP, FIRST
+}
+
+relationship OneToOne {
+    Customer{user(login)} to User
+}

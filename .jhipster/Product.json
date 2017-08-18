@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orderItems",
+            "otherEntityName": "orderItems",
+            "otherEntityRelationshipName": "product"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "cartItems",
+            "otherEntityName": "cartItems",
+            "otherEntityRelationshipName": "product"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "product",
+            "relationshipName": "tag",
+            "otherEntityName": "tag",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "productDesc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170817142549",
+    "entityTableName": "product",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

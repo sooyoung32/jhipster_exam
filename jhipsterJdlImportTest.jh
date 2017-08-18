@@ -10,3 +10,5 @@ enum CustomerLevel {
 relationship OneToOne {
     Customer{user(login)} to User
 }
+
+paginate Customer with infinite-scroll

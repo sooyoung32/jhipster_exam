@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_SrIj8IO0EeeveJPbhFhy-g" name="model">
+  <eAnnotations xmi:id="_SrIj8YO0EeeveJPbhFhy-g" source="genmymodel">
+    <details xmi:id="_SrIj8oO0EeeveJPbhFhy-g" key="uuid" value="_xVkYUIOxEeeveJPbhFhy-g"/>
+    <details xmi:id="_SrIj84O0EeeveJPbhFhy-g" key="author" value="dev4hkpking"/>
+  </eAnnotations>
+  <packageImport xmi:id="_SrIj9IO0EeeveJPbhFhy-g">
+    <eAnnotations xmi:id="_SrIj9YO0EeeveJPbhFhy-g" source="genmymodel">
+      <details xmi:id="_SrIj9oO0EeeveJPbhFhy-g" key="uuid" value="_xVkYUYOxEeeveJPbhFhy-g"/>
+    </eAnnotations>
+    <importedPackage href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#/"/>
+  </packageImport>
+  <packagedElement xsi:type="uml:Class" xmi:id="_SrIj94O0EeeveJPbhFhy-g" name="Customer">
+    <eAnnotations xmi:id="_SrIj-IO0EeeveJPbhFhy-g" source="genmymodel">
+      <details xmi:id="_SrIj-YO0EeeveJPbhFhy-g" key="uuid" value="_O4-VEGXgEDWkuo3pVRNgtw"/>
+    </eAnnotations>
+    <ownedAttribute xmi:id="_SrIj-oO0EeeveJPbhFhy-g" name="customerLevel" visibility="public" type="_SrIkA4O0EeeveJPbhFhy-g">
+      <eAnnotations xmi:id="_SrIj-4O0EeeveJPbhFhy-g" source="genmymodel">
+        <details xmi:id="_SrIj_IO0EeeveJPbhFhy-g" key="uuid" value="_Q8o18GXgEDWkuo3pVRNgtw"/>
+      </eAnnotations>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_SrIj_YO0EeeveJPbhFhy-g" name="phone" visibility="public">
+      <eAnnotations xmi:id="_SrIj_oO0EeeveJPbhFhy-g" source="genmymodel">
+        <details xmi:id="_SrIj_4O0EeeveJPbhFhy-g" key="uuid" value="_bI848GXgEDWkuo3pVRNgtw"/>
+      </eAnnotations>
+      <type xsi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#//String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Enumeration" xmi:id="_SrIkAIO0EeeveJPbhFhy-g" name="Enumeration">
+    <eAnnotations xmi:id="_SrIkAYO0EeeveJPbhFhy-g" source="genmymodel">
+      <details xmi:id="_SrIkAoO0EeeveJPbhFhy-g" key="uuid" value="_TVkcMGXgEDWkuo3pVRNgtw"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Enumeration" xmi:id="_SrIkA4O0EeeveJPbhFhy-g" name="CustomerLevel">
+    <eAnnotations xmi:id="_SrIkBIO0EeeveJPbhFhy-g" source="genmymodel">
+      <details xmi:id="_SrIkBYO0EeeveJPbhFhy-g" key="uuid" value="_5Z8yQGXgEDWkuo3pVRNgtw"/>
+    </eAnnotations>
+    <ownedLiteral xmi:id="_SrIkBoO0EeeveJPbhFhy-g" name="NEW" classifier="_SrIkA4O0EeeveJPbhFhy-g">
+      <eAnnotations xmi:id="_SrIkB4O0EeeveJPbhFhy-g" source="genmymodel">
+        <details xmi:id="_SrIkCIO0EeeveJPbhFhy-g" key="uuid" value="_FlwAwGXhEDWkuo3pVRNgtw"/>
+      </eAnnotations>
+    </ownedLiteral>
+    <ownedLiteral xmi:id="_SrIkCYO0EeeveJPbhFhy-g" name="SILVER" classifier="_SrIkA4O0EeeveJPbhFhy-g">
+      <eAnnotations xmi:id="_SrIkCoO0EeeveJPbhFhy-g" source="genmymodel">
+        <details xmi:id="_SrIkC4O0EeeveJPbhFhy-g" key="uuid" value="_Gvxj4GXhEDWkuo3pVRNgtw"/>
+      </eAnnotations>
+    </ownedLiteral>
+    <ownedLiteral xmi:id="_SrIkDIO0EeeveJPbhFhy-g" name="GOLD" classifier="_SrIkA4O0EeeveJPbhFhy-g">
+      <eAnnotations xmi:id="_SrIkDYO0EeeveJPbhFhy-g" source="genmymodel">
+        <details xmi:id="_SrIkDoO0EeeveJPbhFhy-g" key="uuid" value="_IfX5QGXhEDWkuo3pVRNgtw"/>
+      </eAnnotations>
+    </ownedLiteral>
+    <ownedLiteral xmi:id="_SrIkD4O0EeeveJPbhFhy-g" name="VIP" classifier="_SrIkA4O0EeeveJPbhFhy-g">
+      <eAnnotations xmi:id="_SrIkEIO0EeeveJPbhFhy-g" source="genmymodel">
+        <details xmi:id="_SrIkEYO0EeeveJPbhFhy-g" key="uuid" value="_JAvg8GXhEDWkuo3pVRNgtw"/>
+      </eAnnotations>
+    </ownedLiteral>
+    <ownedLiteral xmi:id="_SrIkEoO0EeeveJPbhFhy-g" name="VVIP" classifier="_SrIkA4O0EeeveJPbhFhy-g">
+      <eAnnotations xmi:id="_SrIkE4O0EeeveJPbhFhy-g" source="genmymodel">
+        <details xmi:id="_SrIkFIO0EeeveJPbhFhy-g" key="uuid" value="_JYi88GXhEDWkuo3pVRNgtw"/>
+      </eAnnotations>
+    </ownedLiteral>
+    <ownedLiteral xmi:id="_SrIkFYO0EeeveJPbhFhy-g" name="FIRST" classifier="_SrIkA4O0EeeveJPbhFhy-g">
+      <eAnnotations xmi:id="_SrIkFoO0EeeveJPbhFhy-g" source="genmymodel">
+        <details xmi:id="_SrIkF4O0EeeveJPbhFhy-g" key="uuid" value="_L1F34GXhEDWkuo3pVRNgtw"/>
+      </eAnnotations>
+    </ownedLiteral>
+  </packagedElement>
+</uml:Model>

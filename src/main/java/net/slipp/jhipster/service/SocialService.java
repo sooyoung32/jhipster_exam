@@ -106,6 +106,7 @@ public class SocialService {
         String login = getLoginDependingOnProviderId(userProfile, providerId);
         String encryptedPassword = passwordEncoder.encode(RandomStringUtils.random(10));
         Set<Authority> authorities = new HashSet<>(2);
+        authorities.add(authorityRepository.findOne("ROLE_USER"));
         authorities.add(authorityRepository.findOne("ROLE_" + providerId.toUpperCase()));
 
         User newUser = new User();

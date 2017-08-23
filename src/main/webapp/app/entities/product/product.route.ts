@@ -22,7 +22,7 @@ export const productRoute: Routes = [
         path: 'product/:id',
         component: ProductDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: [],
             pageTitle: 'jhipsterApp.product.home.title'
         },
         canActivate: [UserRouteAccessService]

@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "cart",
+            "otherEntityName": "cart",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "productName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "createDt",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170823142742",
+    "entityTableName": "cart_items",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

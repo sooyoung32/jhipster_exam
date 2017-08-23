@@ -1,0 +1,37 @@
+
+<div *ngIf="cartItems">
+    <h2><span jhiTranslate="jhipsterApp.cartItems.detail.title">Cart Items</span> {{cartItems.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhipsterApp.cartItems.createDt">Create Dt</span></dt>
+        <dd>
+            <span>{{cartItems.createDt | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cartItems.cart">Cart</span></dt>
+        <dd>
+            <div *ngIf="cartItems.cart">
+                <a [routerLink]="['/cart', cartItems.cart?.id]">{{cartItems.cart?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.cartItems.product">Product</span></dt>
+        <dd>
+            <div *ngIf="cartItems.product">
+                <a [routerLink]="['/product', cartItems.product?.id]">{{cartItems.product?.productName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cart-items/'+ cartItems.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

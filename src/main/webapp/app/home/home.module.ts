@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { JhipsterSharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
-import {ProductService} from '../entities/product/product.service';
 
 @NgModule({
     imports: [
@@ -17,7 +16,6 @@ import {ProductService} from '../entities/product/product.service';
     entryComponents: [
     ],
     providers: [
-        ProductService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

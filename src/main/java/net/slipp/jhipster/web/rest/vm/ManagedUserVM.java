@@ -1,6 +1,5 @@
 package net.slipp.jhipster.web.rest.vm;
 
-import net.slipp.jhipster.domain.enumeration.CustomerLevel;
 import net.slipp.jhipster.service.dto.UserDTO;
 import javax.validation.constraints.Size;
 
@@ -19,9 +18,6 @@ public class ManagedUserVM extends UserDTO {
     @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
     private String password;
 
-    private String phone;
-    private String customerLevel;
-
     public ManagedUserVM() {
         // Empty constructor needed for Jackson.
     }
@@ -35,14 +31,6 @@ public class ManagedUserVM extends UserDTO {
             createdBy, createdDate, lastModifiedBy, lastModifiedDate,  authorities);
 
         this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public CustomerLevel getCustomerLevel() {
-        return CustomerLevel.valueOf(customerLevel);
     }
 
     public String getPassword() {

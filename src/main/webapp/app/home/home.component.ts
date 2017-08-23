@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { Account, LoginModalService, Principal } from '../shared';
-import {ProductService} from '../entities/product/product.service';
-import {ResponseWrapper} from '../shared/model/response-wrapper.model';
-import {Product} from '../entities/product/product.model';
 
 @Component({
     selector: 'jhi-home',
@@ -18,39 +15,12 @@ import {Product} from '../entities/product/product.model';
 export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
-    products: Product[];
-    totalItems: number;
 
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
-        private eventManager: JhiEventManager,
-        private alertService: JhiAlertService,
-        private productService: ProductService
+        private eventManager: JhiEventManager
     ) {
-        this.products = [];
-    }
-
-    loadAll() {
-        this.productService.query({
-            page: 0,
-            size: 20,
-            sort: ['id,asc']
-        }).subscribe(
-            (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
-            (res: ResponseWrapper) => this.onError(res.json)
-        );
-    }
-
-    private onSuccess(data, headers) {
-        this.totalItems = headers.get('X-Total-Count');
-        for (let i = 0; i < data.length; i++) {
-            this.products.push(data[i]);
-        }
-    }
-
-    private onError(error) {
-        this.alertService.error(error.message, null, null);
     }
 
     ngOnInit() {
@@ -58,7 +28,6 @@ export class HomeComponent implements OnInit {
             this.account = account;
         });
         this.registerAuthenticationSuccess();
-        this.loadAll();
     }
 
     registerAuthenticationSuccess() {

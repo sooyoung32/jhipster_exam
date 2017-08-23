@@ -1,14 +1,10 @@
 package net.slipp.jhipster.service;
 
 import net.slipp.jhipster.domain.Authority;
-import net.slipp.jhipster.domain.Customer;
 import net.slipp.jhipster.domain.User;
-import net.slipp.jhipster.domain.enumeration.CustomerLevel;
 import net.slipp.jhipster.repository.AuthorityRepository;
 import net.slipp.jhipster.config.Constants;
-import net.slipp.jhipster.repository.CustomerRepository;
 import net.slipp.jhipster.repository.UserRepository;
-import net.slipp.jhipster.repository.search.CustomerSearchRepository;
 import net.slipp.jhipster.repository.search.UserSearchRepository;
 import net.slipp.jhipster.security.AuthoritiesConstants;
 import net.slipp.jhipster.security.SecurityUtils;
@@ -24,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -93,11 +88,8 @@ public class UserService {
             });
     }
 
-    @Inject CustomerRepository customerRepository;
-    @Inject CustomerSearchRepository customerSearchRepository;
-
     public User createUser(String login, String password, String firstName, String lastName, String email,
-        String imageUrl, String langKey, String phone, CustomerLevel customerLevel) {
+        String imageUrl, String langKey) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -120,16 +112,6 @@ public class UserService {
         userRepository.save(newUser);
         userSearchRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
-
-        Customer newCustomer = new Customer();
-        newCustomer.setUser(newUser);
-        newCustomer.setPhone(phone);
-        newCustomer.setCustomerLevel(customerLevel);
-
-        customerRepository.save(newCustomer);
-        customerSearchRepository.save(newCustomer);
-        log.debug("Created Information for Customer: {}", newCustomer);
-
         return newUser;
     }
 

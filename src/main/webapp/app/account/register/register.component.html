@@ -109,19 +109,6 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="phone" jhiTranslate="global.form.phone">phone</label>
-                    <input type="text" class="form-control" [(ngModel)]="registerAccount.phone" id="phone" name="phone" #phone="ngModel" placeholder="{{'global.form.phone.placeholder' | translate}}"
-                           required minlength="1" maxlength="50" pattern="[0-9-]+">
-                    <div *ngIf="phone.dirty && phone.invalid">
-                        <small class="form-text text-danger" *ngIf="phone.errors.pattern"
-                               jhiTranslate="register.messages.validate.phone.pattern">
-                            Your phone number can only contain hipen and digits.
-                        </small>
-                    </div>
-                </div>
-
-                <input type="hidden" [(ngModel)]="registerAccount.customerLevel" id="customerLevel" name="customerLevel" #customerLevel="ngModel" />
 
                 <button type="submit" [disabled]="registerForm.form.invalid" class="btn btn-primary" jhiTranslate="register.form.button">Register</button>
             </form>

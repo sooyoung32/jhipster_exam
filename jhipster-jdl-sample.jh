@@ -1,0 +1,74 @@
+
+entity Customer {
+    customerLevel CustomerLevel,
+    phone String
+}
+
+enum CustomerLevel {
+    NEW, SILVER, GOLD, VIP, VVIP, FIRST
+}
+
+entity Orders {
+	orderCode String required,
+    orderDt ZonedDateTime required
+}
+
+entity OrderItems {
+    unitPrice Integer required,
+    quantity Integer required
+}
+
+entity Product {
+    productName String required,
+    productDesc String,
+    price Integer required
+}
+entity CartItems {
+     createDt ZonedDateTime
+}
+
+entity Cart {
+}
+
+entity Tag {
+	name String required minlength(2)
+}
+
+relationship OneToMany {
+    Product to OrderItems{product(productName)},
+    Product to CartItems{product(productName)}
+}
+
+relationship ManyToOne {
+	Orders{user(login)} to User,
+	OrderItems{orders(orderCode)} to Orders,
+    CartItems{cart} to Cart
+}
+
+relationship OneToOne {
+	Cart{user(login)} to User,
+    Customer{user(login)} to User
+}
+
+relationship ManyToMany {
+	Product{tag(name)} to Tag{product}
+}
+
+// Set pagination options
+paginate Orders, Product, OrderItems, CartItems, Cart, Tag with infinite-scroll
+paginate Customer with pagination
+
+// dto * with mapstruct
+
+// Set service options to all except few
+// service all with serviceImpl except Orders
+
+// ex)
+// dto A, B with mapstruct
+// paginate A, C with infinite-scroll
+// paginate B with pager
+// service A with serviceClass
+// service C with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with app

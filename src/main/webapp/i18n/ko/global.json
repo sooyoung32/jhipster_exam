@@ -7,6 +7,13 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "customer": "Customer",
+                "orders": "Orders",
+                "orderItems": "Order Items",
+                "product": "Product",
+                "cartItems": "Cart Items",
+                "cart": "Cart",
+                "tag": "Tag",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -46,7 +53,9 @@
             "confirmpassword": "새 비밀번호 확인",
             "confirmpassword.placeholder": "새 비밀번호 확인",
             "email": "이메일",
-            "email.placeholder": "이메일을 입력하세요"
+            "email.placeholder": "이메일을 입력하세요",
+            "phone": "휴대폰",
+            "phone.placeholder": "휴대폰 번호를 입력하세요."
         },
         "messages": {
             "info": {

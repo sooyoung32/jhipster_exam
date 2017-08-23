@@ -53,7 +53,9 @@
             "confirmpassword": "새 비밀번호 확인",
             "confirmpassword.placeholder": "새 비밀번호 확인",
             "email": "이메일",
-            "email.placeholder": "이메일을 입력하세요"
+            "email.placeholder": "이메일을 입력하세요",
+            "phone": "휴대폰",
+            "phone.placeholder": "휴대폰 번호를 입력하세요."
         },
         "messages": {
             "info": {

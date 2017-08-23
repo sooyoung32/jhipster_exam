@@ -1,9 +1,13 @@
 package net.slipp.jhipster.service;
 
 import net.slipp.jhipster.domain.Authority;
+import net.slipp.jhipster.domain.Customer;
 import net.slipp.jhipster.domain.User;
+import net.slipp.jhipster.domain.enumeration.CustomerLevel;
 import net.slipp.jhipster.repository.AuthorityRepository;
+import net.slipp.jhipster.repository.CustomerRepository;
 import net.slipp.jhipster.repository.UserRepository;
+import net.slipp.jhipster.repository.search.CustomerSearchRepository;
 import net.slipp.jhipster.repository.search.UserSearchRepository;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -17,6 +21,7 @@ import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Optional;
@@ -73,6 +78,8 @@ public class SocialService {
         mailService.sendSocialRegistrationValidationEmail(user, providerId);
     }
 
+    @Inject CustomerRepository customerRepository;
+    @Inject CustomerSearchRepository customerSearchRepository;
     private User createUserIfNotExist(UserProfile userProfile, String langKey, String providerId, String imageUrl) {
         String email = userProfile.getEmail();
         String userName = userProfile.getUsername();
@@ -120,8 +127,18 @@ public class SocialService {
         newUser.setLangKey(langKey);
         newUser.setImageUrl(imageUrl);
 
+        userRepository.save(newUser);
         userSearchRepository.save(newUser);
-        return userRepository.save(newUser);
+
+        Customer newCustomer = new Customer();
+        newCustomer.setUser(newUser);
+        newCustomer.setCustomerLevel(CustomerLevel.NEW);
+
+        customerRepository.save(newCustomer);
+        customerSearchRepository.save(newCustomer);
+        log.debug("Created Information for Customer: {}", newCustomer);
+
+        return newUser;
     }
 
     /**

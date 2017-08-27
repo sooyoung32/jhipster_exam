@@ -250,6 +250,12 @@ task wrapper(type: Wrapper) {
 task stage(dependsOn: 'bootRepackage') {
 }
 
+task print() {
+    doLast{
+        println "slipp test!"
+    }
+}
+
 if (project.hasProperty('nodeInstall')) {
     node {
         version = "${node_version}"

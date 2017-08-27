@@ -252,7 +252,7 @@ task stage(dependsOn: 'bootRepackage') {
 
 task print() {
     doLast{
-        println "slipp test!"
+        println "slipp test! with git hub!"
     }
 }
 
